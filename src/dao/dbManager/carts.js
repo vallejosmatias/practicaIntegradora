@@ -1,11 +1,16 @@
-import cartsModel from "../models/carts.js";
+import {cartsModel} from "../models/carts.js";
 
-export default class carts {
+export default class Carts {
   constructor(){
     console.log("trabajando carts con la base de datos de mongo")
   }
   async getAll(){
     let  carts = await  cartsModel.find().lean();
+    return carts;
+  }
+
+  async getById(){
+    let carts = await cartsModel.findById(id).lean();
     return carts;
   }
 
@@ -15,10 +20,13 @@ export default class carts {
     return result;
   }
   
-  async updateCart(id, cart){
+  async updateCarts(id, cart){
     const result = await cartsModel.updateOne({_id:id}, cart);
     return result;  
   }
   
-  
+  async deleteCarts(id){
+    const result = await cartsModel.deleteOne({_id: id})
+    return result;
+  }
 }

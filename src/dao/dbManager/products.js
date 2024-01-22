@@ -1,6 +1,6 @@
 import productsModel from "../models/products";
 
-export default class products {
+export default class Products {
   constructor(){
     console.log("trabajando products con la base de datos de mongo")
   }
